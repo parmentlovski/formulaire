@@ -2,7 +2,13 @@
 #errorFirstName,
 #errorLastName,
 #errorMail,
-#errorTel {
+#errorTel,
+#errorStreet,
+#errorPostal,
+#errorCity,
+#errorMessage {
     color: red;
     /* font-weight: bold; */
 }
+
+ 
