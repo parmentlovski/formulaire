@@ -27,7 +27,7 @@ inputMessage.addEventListener('blur', erreurMessage);
 
 // Premier champ = NOM 
 
-function erreurLastName() {
+function erreurLastName(e) {
 
     majuscules = /^[A-Z ]+$/;
     errorLastName = document.querySelector('#errorLastName');
@@ -41,12 +41,14 @@ function erreurLastName() {
     else if (document.querySelector('#lastname').value === ("")) {
         errorLastName.innerHTML = "Veuillez renseigner votre nom";
         validate.style.display = "none";
+        e.preventDefault();
         return false;
     }
 
     else {
         errorLastName.innerHTML = 'Veuillez utiliser des caractères valides ainsi que des majuscules';
         validate.style.display = "none";
+        e.preventDefault();
         return false;
     }
 }
