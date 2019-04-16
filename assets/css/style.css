@@ -1,1 +1,8 @@
 
+#errorFirstName,
+#errorLastName,
+#errorMail,
+#errorTel {
+    color: red;
+    /* font-weight: bold; */
+}
