@@ -8,6 +8,7 @@ inputStreet = document.querySelector('#street');
 inputPostal = document.querySelector('#postal');
 inputCity = document.querySelector('#city');
 inputMessage = document.querySelector('#message');
+validate = document.querySelector('#validate');
 
 
 // EVENEMENTS
@@ -28,21 +29,24 @@ inputMessage.addEventListener('blur', erreurMessage);
 
 function erreurLastName() {
 
-    majuscules = /^[A-Z]+$/;
+    majuscules = /^[A-Z ]+$/;
     errorLastName = document.querySelector('#errorLastName');
 
     if (document.querySelector('#lastname').value.match(majuscules)) {
         errorLastName.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#lastname').value === ("")) {
         errorLastName.innerHTML = "Veuillez renseigner votre nom";
+        validate.style.display = "none";
         return false;
     }
 
     else {
         errorLastName.innerHTML = 'Veuillez utiliser des caractères valides ainsi que des majuscules';
+        validate.style.display = "none";
         return false;
     }
 }
@@ -52,21 +56,24 @@ function erreurLastName() {
 
 function erreurFirstName() {
 
-    letters = /^[A-Za-z]+$/;
+    letters = /^[A-Za-z é-]+$/;
     errorFirstName = document.querySelector('#errorFirstName');
 
     if (document.querySelector('#firstname').value.match(letters)) {
         errorFirstName.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#firstname').value === ("")) {
         errorFirstName.innerHTML = "Veuillez renseigner votre prénom";
+        validate.style.display = "none";
         return false; 
     }
 
     else {
         errorFirstName.innerHTML = "Veuillez utiliser des caractères valides";
+        validate.style.display = "none";
         return false;
     }
 }
@@ -80,18 +87,20 @@ function erreurMail() {
     errorMail = document.querySelector('#errorMail');
 
     if(document.querySelector('#mail').value.match(mail)) {
-      
         errorMail.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#mail').value === ("")) {
         errorMail.innerHTML = "Veuillez renseigner votre adresse mail";
+        validate.style.display = "none";
         return false;
     }
 
     else {
         errorMail.innerHTML = "Veuillez remplir une adresse mail valide";
+        validate.style.display = "none";
         return false;
     }
 }
@@ -105,18 +114,20 @@ function erreurTel() {
     errorTel = document.querySelector('#errorTel');
 
     if (document.querySelector('#tel').value.match(tel)) {
-
         errorTel.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#tel').value === ("")) {
         errorTel.innerHTML = "Veuillez renseigner votre numéro de téléphone";
+        validate.style.display = "none";
         return false;
     }
 
     else {
         errorTel.innerHTML = "Veuillez indiquer un numéro de téléphone valide";
+        validate.style.display = "none";
         return false;
     }
 
@@ -127,22 +138,24 @@ function erreurTel() {
 
 function erreurStreet() {
 
-    street = /((^[0-9]*).?((BIS)|(TER)|(QUATER))?)?((\W+)|(^))(([a-z]+.)*)([0-9]{5})?.(([a-z\'']+.)*)$/;
+    street = /^[a-zA-Z0-9, -ç]+$/;
     errorStreet = document.querySelector("#errorStreet");
 
     if(document.querySelector('#street').value.match(street)) {
-
         errorStreet.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#street').value === ("")) {
         errorStreet.innerHTML = "Veuillez renseigner votre rue";
+        validate.style.display = "none";
         return false;
     }
 
     else {
         errorStreet.innerHTML = "Veuillez indiquer une rue valide";
+        validate.style.display = "none";
         return false;
     }
 }
@@ -157,16 +170,19 @@ function erreurPostal() {
 
     if (document.querySelector('#postal').value.match(postal)) {
         errorPostal.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#postal').value ===("")) {
         errorPostal.innerHTML = "Veuillez renseigner votre code postal";
+        validate.style.display = "none";
         return false;
     }
 
     else {
         errorPostal.innerHTML = "Veuillez indiquer un code postal valide";
+        validate.style.display = "none";
         return false;
     }
 }
@@ -175,21 +191,24 @@ function erreurPostal() {
 
 function erreurCity() {
 
-    city = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+    city = /^[a-zA-Z, -ç]+$/;
     errorCity = document.querySelector("#errorCity");
 
     if (document.querySelector("#city").value.match(city)) {
         errorCity.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#city').value === ("")) {
         errorCity.innerHTML = "Veuillez renseigner votre ville";
+        validate.style.display = "none";
         return false;
     }
 
     else {
         errorCity.innerHTML = "Veuillez indique une ville valide";
+        validate.style.display = "none";
         return false;
     }
 }
@@ -199,25 +218,24 @@ function erreurCity() {
 
 function erreurMessage() {
    
-    message = /((^[0-9]*).?((BIS)|(TER)|(QUATER))?)?((\W+)|(^))(([a-z]+.)*)([0-9]{5})?.(([a-z\'']+.)*)$/;
+    message = /^[a-zA-Z0-9, -ç]+$/;
     errorMessage = document.querySelector('#errorMessage');
 
     if (document.querySelector('#message').value.match(message)) {
         errorMessage.innerHTML = "";
+        validate.style.display = "inherit";
         return true;
     }
 
     else if (document.querySelector('#message').value === ("")) {
         errorMessage.innerHTML = "Veuillez renseigner un message";
+        validate.style.display = "none";
         return false;
     }
 
     else {
         errorMessage.innerHTML = "Veuillez indiquer un message valide";
+        validate.style.display = "none";
         return false;
     }
 }
-
-
-// Validation du formulaire 
-
