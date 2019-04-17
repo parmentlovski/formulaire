@@ -8,8 +8,18 @@ inputStreet = document.querySelector('#street');
 inputPostal = document.querySelector('#postal');
 inputCity = document.querySelector('#city');
 inputMessage = document.querySelector('#message');
-validate = document.querySelector('#validate');
+errorSubmit = document.querySelector('#errorSubmit');
 
+
+// reg ex
+majuscules = /^[A-Z ]+$/;
+letters = /^[A-Za-z é-]+$/;
+mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+city = /^[a-zA-Z, -ç]+$/;
+postal = /^([0-9]{5})$/;
+street = /^[a-zA-Z0-9, -ç]+$/;
+tel = /^(06|07|09|01|02|03|04|05)[0-9]{8}$/ ;
+message = /^[a-zA-Z0-9, -ç]+$/;
 
 // EVENEMENTS
 
@@ -20,37 +30,36 @@ inputTel.addEventListener('blur', erreurTel);
 inputStreet.addEventListener('blur', erreurStreet);
 inputPostal.addEventListener('blur', erreurPostal);
 inputCity.addEventListener('blur', erreurCity);
-inputMessage.addEventListener('blur', erreurMessage); 
+inputMessage.addEventListener('blur', erreurMessage);
+document.querySelector('#validate').addEventListener('click', notSubmit);
 
 
 // FONCTIONS
 
 // Premier champ = NOM 
 
-function erreurLastName(e) {
+function erreurLastName() {
 
-    majuscules = /^[A-Z ]+$/;
     errorLastName = document.querySelector('#errorLastName');
 
     if (document.querySelector('#lastname').value.match(majuscules)) {
         errorLastName.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#lastname').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#lastname').value === ("")) {
         errorLastName.innerHTML = "Veuillez renseigner votre nom";
-        validate.style.display = "none";
-        e.preventDefault();
+        document.querySelector('#lastname').style.backgroundColor = "inherit";
         return false;
     }
 
     else {
         errorLastName.innerHTML = 'Veuillez utiliser des caractères valides ainsi que des majuscules';
-        validate.style.display = "none";
-        e.preventDefault();
+        document.querySelector('#lastname').style.backgroundColor = "inherit";
         return false;
     }
+    
 }
 
 
@@ -58,24 +67,23 @@ function erreurLastName(e) {
 
 function erreurFirstName() {
 
-    letters = /^[A-Za-z é-]+$/;
     errorFirstName = document.querySelector('#errorFirstName');
 
     if (document.querySelector('#firstname').value.match(letters)) {
         errorFirstName.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#firstname').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#firstname').value === ("")) {
         errorFirstName.innerHTML = "Veuillez renseigner votre prénom";
-        validate.style.display = "none";
-        return false; 
+        document.querySelector('#firstname').style.backgroundColor = "inherit";
+        return false;
     }
 
     else {
         errorFirstName.innerHTML = "Veuillez utiliser des caractères valides";
-        validate.style.display = "none";
+        document.querySelector('#firstname').style.backgroundColor = "inherit";
         return false;
     }
 }
@@ -85,26 +93,25 @@ function erreurFirstName() {
 
 function erreurMail() {
 
-    mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     errorMail = document.querySelector('#errorMail');
 
     if(document.querySelector('#mail').value.match(mail)) {
         errorMail.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#mail').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#mail').value === ("")) {
         errorMail.innerHTML = "Veuillez renseigner votre adresse mail";
-        validate.style.display = "none";
+        document.querySelector('#mail').style.backgroundColor = "inherit";
         return false;
     }
 
     else {
         errorMail.innerHTML = "Veuillez remplir une adresse mail valide";
-        validate.style.display = "none";
+        document.querySelector('#mail').style.backgroundColor = "inherit";
         return false;
-    }
+    }   
 }
 
 
@@ -112,27 +119,25 @@ function erreurMail() {
 
 function erreurTel() {
     
-    tel = /^(06|07|09|01|02|03|04|05)[0-9]{8}$/ ;
     errorTel = document.querySelector('#errorTel');
 
     if (document.querySelector('#tel').value.match(tel)) {
         errorTel.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#tel').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#tel').value === ("")) {
         errorTel.innerHTML = "Veuillez renseigner votre numéro de téléphone";
-        validate.style.display = "none";
+        document.querySelector('#tel').style.backgroundColor = "inherit";
         return false;
     }
 
     else {
         errorTel.innerHTML = "Veuillez indiquer un numéro de téléphone valide";
-        validate.style.display = "none";
+        document.querySelector('#tel').style.backgroundColor = "inherit";
         return false;
     }
-
 }
 
 
@@ -140,24 +145,23 @@ function erreurTel() {
 
 function erreurStreet() {
 
-    street = /^[a-zA-Z0-9, -ç]+$/;
     errorStreet = document.querySelector("#errorStreet");
 
     if(document.querySelector('#street').value.match(street)) {
         errorStreet.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#street').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#street').value === ("")) {
         errorStreet.innerHTML = "Veuillez renseigner votre rue";
-        validate.style.display = "none";
+        document.querySelector('#street').style.backgroundColor = "inherit";
         return false;
     }
 
     else {
         errorStreet.innerHTML = "Veuillez indiquer une rue valide";
-        validate.style.display = "none";
+        document.querySelector('#street').style.backgroundColor = "inherit";
         return false;
     }
 }
@@ -167,24 +171,23 @@ function erreurStreet() {
 
 function erreurPostal() {
 
-    postal = /^([0-9]{5})$/;
     errorPostal = document.querySelector("#errorPostal");
 
     if (document.querySelector('#postal').value.match(postal)) {
         errorPostal.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#postal').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#postal').value ===("")) {
         errorPostal.innerHTML = "Veuillez renseigner votre code postal";
-        validate.style.display = "none";
+        document.querySelector('#postal').style.backgroundColor = "inherit";
         return false;
     }
 
     else {
         errorPostal.innerHTML = "Veuillez indiquer un code postal valide";
-        validate.style.display = "none";
+        document.querySelector('#postal').style.backgroundColor = "inherit";
         return false;
     }
 }
@@ -193,24 +196,23 @@ function erreurPostal() {
 
 function erreurCity() {
 
-    city = /^[a-zA-Z, -ç]+$/;
     errorCity = document.querySelector("#errorCity");
 
     if (document.querySelector("#city").value.match(city)) {
         errorCity.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#city').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#city').value === ("")) {
         errorCity.innerHTML = "Veuillez renseigner votre ville";
-        validate.style.display = "none";
+        document.querySelector('#city').style.backgroundColor = "inherit";
         return false;
     }
 
     else {
         errorCity.innerHTML = "Veuillez indique une ville valide";
-        validate.style.display = "none";
+        document.querySelector('#city').style.backgroundColor = "inherit";
         return false;
     }
 }
@@ -220,24 +222,43 @@ function erreurCity() {
 
 function erreurMessage() {
    
-    message = /^[a-zA-Z0-9, -ç]+$/;
     errorMessage = document.querySelector('#errorMessage');
 
     if (document.querySelector('#message').value.match(message)) {
         errorMessage.innerHTML = "";
-        validate.style.display = "inherit";
+        document.querySelector('#message').style.backgroundColor = "#88CC88";
         return true;
     }
 
     else if (document.querySelector('#message').value === ("")) {
         errorMessage.innerHTML = "Veuillez renseigner un message";
-        validate.style.display = "none";
+        document.querySelector('#message').style.backgroundColor = "inherit";
         return false;
     }
 
     else {
         errorMessage.innerHTML = "Veuillez indiquer un message valide";
-        validate.style.display = "none";
+        document.querySelector('#message').style.backgroundColor = "inherit";
         return false;
+    }
+}
+
+
+// VALIDATION 
+
+function notSubmit(e) {
+
+    if (majuscules === true || letters === true || mail === true || city === true || postal === true || street === true || tel === true || message === true ){
+        alert("Formulaire envoyé !");
+        errorSubmit.innerHTML = "Le formulaire est validé";
+        errorSubmit.style.color = "black";
+        console.log('salut');
+    }
+
+    else {
+        e.preventDefault();
+        window.scrollTo(0,0);
+        errorSubmit.innerHTML = "Les champs ne sont pas remplis";
+        console.log('aurevoir');
     }
 }
