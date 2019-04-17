@@ -96,3 +96,9 @@ input {
     color: #643103;
     background-color: #fff;
 }
+
+#errorSubmit {
+    margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
